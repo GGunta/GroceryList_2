@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xMh-Op-KJK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Grocery Shopping List-->
+        <scene sceneID="RhT-ih-Wps">
+            <objects>
+                <tableViewController id="FB3-AA-ipX" customClass="GroceryTableViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iRH-es-mbC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="shoppingCell" textLabel="Q4T-sw-uMg" style="IBUITableViewCellStyleDefault" id="jlS-Kg-Of1">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="46.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jlS-Kg-Of1" id="8iy-O8-2xb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q4T-sw-uMg">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="46.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FB3-AA-ipX" id="7kc-j3-SEN"/>
+                            <outlet property="delegate" destination="FB3-AA-ipX" id="ihD-dk-fNW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Grocery Shopping List" id="eVs-c3-vLZ">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="info.circle" catalog="system" id="PIg-XW-RCK">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <segue destination="zId-Hc-7rj" kind="show" identifier="appInfo" id="e5S-D1-Krk"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="trash" catalog="system" id="Pss-RV-Vnc">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="deleteAllItems:" destination="FB3-AA-ipX" id="bep-Wb-sQN"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="cart.badge.plus" catalog="system" id="y9b-lV-37q">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="addNewItem:" destination="FB3-AA-ipX" id="c6G-il-nUV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mps-If-0rn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1093" y="199"/>
+        </scene>
+        <!--Appearance Info View Controller-->
+        <scene sceneID="ez5-4C-DQU">
+            <objects>
+                <viewController id="zId-Hc-7rj" customClass="AppearanceInfoViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EvZ-c8-a0k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-Sx-Hhe">
+                                <rect key="frame" x="77" y="164" width="260" height="129"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Mode is On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tn-2R-H8c">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="3eW-Ar-ekU"/>
+                                            <constraint firstAttribute="height" constant="75" id="hlM-H5-GA9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="18"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8T3-xv-e12">
+                                        <rect key="frame" x="0.0" y="83" width="260" height="46"/>
+                                        <color key="backgroundColor" red="0.24771131360000001" green="0.96524189429999996" blue="0.42709395880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="ZZa-lj-Uqf"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="eYS-qT-dfG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter-CondensedBold" family="American Typewriter" pointSize="20"/>
+                                        <state key="normal" title="Open Settings">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openSettingsTapped:" destination="zId-Hc-7rj" eventType="touchUpInside" id="puP-Br-on2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URJ-KE-Glz">
+                                <rect key="frame" x="48" y="417" width="318" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="318" id="Mdu-tA-x4o"/>
+                                    <constraint firstAttribute="height" constant="288" id="PBi-rb-oGT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ifq-82-zPB"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="ifq-82-zPB" firstAttribute="trailing" secondItem="Xvg-Sx-Hhe" secondAttribute="trailing" constant="77" id="2ZA-dA-abZ"/>
+                            <constraint firstItem="URJ-KE-Glz" firstAttribute="leading" secondItem="ifq-82-zPB" secondAttribute="leading" constant="48" id="7QB-bp-HUK"/>
+                            <constraint firstItem="Xvg-Sx-Hhe" firstAttribute="leading" secondItem="ifq-82-zPB" secondAttribute="leading" constant="77" id="FdI-eF-0yB"/>
+                            <constraint firstItem="Xvg-Sx-Hhe" firstAttribute="top" secondItem="ifq-82-zPB" secondAttribute="top" constant="76" id="JlR-X9-TOJ"/>
+                            <constraint firstItem="URJ-KE-Glz" firstAttribute="top" secondItem="Xvg-Sx-Hhe" secondAttribute="bottom" constant="124" id="NNa-g8-ZIV"/>
+                            <constraint firstItem="ifq-82-zPB" firstAttribute="trailing" secondItem="URJ-KE-Glz" secondAttribute="trailing" constant="48" id="RvZ-sD-d0x"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2pz-VZ-so0"/>
+                    <connections>
+                        <outlet property="appInfoLabel" destination="URJ-KE-Glz" id="CLj-ZT-6YZ"/>
+                        <outlet property="textLabel" destination="5Tn-2R-H8c" id="Ddh-mv-QtB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lJo-mW-mFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824.6376811594205" y="198.88392857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EEE-ms-rJH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xMh-Op-KJK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lyA-fh-iNj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter-CondensedBold" family="American Typewriter" pointSize="24"/>
+                            <color key="textColor" red="0.24052590984300404" green="0.93724296019249353" blue="0.41470517243037636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FB3-AA-ipX" kind="relationship" relationship="rootViewController" id="MOd-fd-oMN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MCm-X9-98x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="389.85507246376812" y="198.88392857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cart.badge.plus" catalog="system" width="128" height="106"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
