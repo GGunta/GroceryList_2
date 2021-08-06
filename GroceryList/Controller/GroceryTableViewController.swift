@@ -43,8 +43,16 @@ class GroceryTableViewController: UITableViewController {
         loadData()
     }
     
-    
-    
+    func DeleteAllData() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Grocery")
+        let request: NSBatchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try manageObjectContext?.execute(request)
+            saveData()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
     
     @IBAction func addNewItem(_ sender: Any) {
         
@@ -75,37 +83,21 @@ class GroceryTableViewController: UITableViewController {
     
     @IBAction func deleteAllItems(_ sender: Any) {
         
-        let deleteController = UIAlertController(title: "Delete all", message: "Do you really want to delete all your items?" , preferredStyle: .alert)
+        let deleteController = UIAlertController(title: "Delete all grocery items", message: "Do you really want to delete all your items?" , preferredStyle: .actionSheet)
         
         let addDeleteButton = UIAlertAction(title: "Delete", style: .destructive) { alertAction in
-            
-            func deleteAllData(entity: String)
-            {
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let managedContext = appDelegate.managedObjectContext
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-                fetchRequest.returnsObjectsAsFaults = false
-                
-                do
-            {
-                let results = try managedContext.executeFetchRequest(fetchRequest)
-                for managedObject in results
-                {
-                    let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-                    managedContext.deleteObject(managedObjectData)
-                }
-            } catch let error as NSError {
-                print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
-            }
-            }
-            
-            let cancelButton = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-            deleteController.addAction(addDeleteButton)
-            deleteController.addAction(cancelButton)
-            
-            self.present(deleteController, animated: true, completion: nil)
+            self.DeleteAllData()
         }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        deleteController.addAction(addDeleteButton)
+        deleteController.addAction(cancelButton)
+        
+        present(deleteController, animated: true, completion: nil)
     }
+    
+    
     
     // MARK: - Table view data source
     
@@ -136,7 +128,7 @@ class GroceryTableViewController: UITableViewController {
         
     }
     
-       
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         groceries[indexPath.row].completed = !groceries[indexPath.row].completed
@@ -152,6 +144,5 @@ class GroceryTableViewController: UITableViewController {
         }
         
     }
-    
     
 }
